@@ -4,7 +4,7 @@
  * main - print the size various types on the computer
  *
  * Description: using the main function
- * This program prints "The size of various types of computer"
+ * this program prints "The size of various types of computer"
  * Return: 0
  */
 int main(void)
