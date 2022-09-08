@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * main - print the size of various types on the computer it is compile...
+ * main - print the size of various types on the computer it 
  *
  * Description using the main function
- * This program "prints the size of various types on the computer it is compile...
+ * This program prints "the size of various types on the computer it 
  * Return: (0)
  */
 int main(void)
