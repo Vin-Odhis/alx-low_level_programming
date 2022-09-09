@@ -18,7 +18,7 @@ int main(void)
 		putchar(i);
 		if (i != 57)
 		{
-			putchat(44);
+			putchar(44);
 			putchar(32);
 			i++;
 		}
