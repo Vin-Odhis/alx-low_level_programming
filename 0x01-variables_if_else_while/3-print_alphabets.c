@@ -9,9 +9,16 @@ int main(void)
 {
 	char l;
 
-	l = 'A';
+	l = 'a';
+	while (l <= 'z')
+	{
+		putchar(l);
+		l++;
+	}
+	l = 'A'
 	while (l <= 'Z')
-	{putchar(1);
+	{
+		putchar(l);
 		l++;
 	}
 	putchar('\n');
