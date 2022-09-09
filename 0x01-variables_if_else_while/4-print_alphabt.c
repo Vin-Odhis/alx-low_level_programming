@@ -15,7 +15,7 @@ int main(void)
 	{
 		if ((l != 'e') && (l != 'q'))
 		{
-			purchar(l);
+			putchar(l);
 			l++;
 		}
 		else
@@ -23,6 +23,6 @@ int main(void)
 			l++;
 		}
 	}
-	purchar('\n');
+	putchar('\n');
 	return (0);
 }
