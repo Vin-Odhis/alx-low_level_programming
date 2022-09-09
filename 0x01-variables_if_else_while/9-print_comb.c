@@ -29,7 +29,7 @@ int main(void)
 		}
 	}
 		putchar('\n');
-		/* End of my code */
+		/* End of my code*/
 
 		return (0);
 }
