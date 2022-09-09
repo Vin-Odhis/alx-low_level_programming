@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 
-/*A program that prints the alphabet in lowercase, and then in uppercase, followed by a new line*/
+/*A program that prints the alphabet in lowercase,*/
+/*and then in uppercase, followed by a new line*/
 /**
  * main - Entry point
  *
@@ -25,4 +26,4 @@ int main(void)
 	}
 	putchar('\n');
 	return (0);
-}
+i}
