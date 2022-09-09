@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+
 /* A program that that prints all*/
 /* possible combinations of single-digit numbers.*/
+
 
 /**
  * main - Entry point
