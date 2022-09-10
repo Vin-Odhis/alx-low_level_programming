@@ -4,7 +4,8 @@
 
 /* task 11*/
 /* using Betty style*/
-/* A program that that prints all possible different combinations of three digits.*/
+/* A program that that prints all possible*/
+/* different combinations of three digits.*/
 
 /**
  * main - Entry point
