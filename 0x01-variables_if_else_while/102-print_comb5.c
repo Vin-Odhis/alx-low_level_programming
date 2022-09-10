@@ -51,7 +51,7 @@ int main(void)
 					k = i + 1;
 					l = 48;
 				}
-				else if (j ==57)
+				else if (j == 57)
 				{
 					j = 48;
 					l = 49;
