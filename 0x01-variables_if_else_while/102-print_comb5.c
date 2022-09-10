@@ -4,11 +4,10 @@
 
 /* last task*/ 
 /* using betty style*/
-/**
- * a program that prints all 
- * possible combination
- * of two two-digit numbers.
- */
+
+/* a program that prints all */
+/* possible combination*/
+/* of two two-digit numbers.*/
 
 
 /**
