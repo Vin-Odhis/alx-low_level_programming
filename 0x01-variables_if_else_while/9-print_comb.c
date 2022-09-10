@@ -2,9 +2,9 @@
 #include <time.h>
 #include <stdio.h>
 
-/* A program that that prints all*/
-/* possible combinations*/
-/* of single-digit numbers.*/
+/*A program that that prints all*/
+/*possible combinations*/
+/*of single-digit numbers.*/
 
 
 /**
