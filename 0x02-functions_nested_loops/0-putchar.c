@@ -1,4 +1,4 @@
-#include "main.h"
+#include"_putchar.h"
 
 /**
  * main - function that print putchar
@@ -7,15 +7,13 @@
  */
 int main(void)
 {
-	int i = 0;
-	char c;
-	char s[] = "_putchar\n";
+	char _putchar[9] = {'H', 'o', 'l', 'b', 'e', 'r', 't', 'o', 'n'};
+	unsigned int c;
 
-	while
+	for (c = 0; c < sizeof(_putchar); c++)
 	{
-		c = s[i];
-		_puchar(c);
-		i++;
+		_putchar(_putchar[c]);
 	}
+	_putchar('\n');
 	return (0);
 }
