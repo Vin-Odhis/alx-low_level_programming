@@ -9,11 +9,11 @@
  */
 void print_alphabetic(void)
 {
-	int i;
-
-	for (i = 97; i < 123; i++)
+	int c;
+	
+	for (c = 'a'; c <= 'z'; c++)
 	{
-		_putchar(i);
+		_putchar(c);
 	}
 	_putchar('\n');
 }
