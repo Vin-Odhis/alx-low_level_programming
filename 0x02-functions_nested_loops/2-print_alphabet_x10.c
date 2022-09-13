@@ -1,13 +1,14 @@
 #include "main.h"
 
 /**
+ *main - a function that prints ten
+ *times the alphabet in lowercase
+ *followed by a nwe line
  *
- * main - a function that prints 10
- * times the alphabet in lowercase
- * followed by a nwe line
+ *Return: 0
  */
 
-void print_alphabetic_x10(void)
+void print_alphabet_x10(void)
 {
 	char c, i;
 
