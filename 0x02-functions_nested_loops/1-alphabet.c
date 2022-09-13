@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  *print_alphabet - program that prints a..z
  *
