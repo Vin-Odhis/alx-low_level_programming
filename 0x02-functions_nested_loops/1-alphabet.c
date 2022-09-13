@@ -1,14 +1,16 @@
 #include "main.h"
 
 /**
- * main - a program that prints the alphabets
- * in lowercase,
- * followed by a new line.
+ *print_alphabet - function to ptint abc
  *
- * Return: Always 0
+ *main - a program that prints the alphabet
+ *in lowercase
+ *followed by a new line
+ *
+ *Return: Always 
  */
 
-void print_alphabet(void)
+void print_alphabet (void)
 {
 	char c;
 	
