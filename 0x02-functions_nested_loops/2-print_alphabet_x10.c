@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *main - a function that prints ten
+ print_alphabet_x10 - a function that prints ten
  *times the alphabet in lowercase
  *followed by a nwe line
  *
