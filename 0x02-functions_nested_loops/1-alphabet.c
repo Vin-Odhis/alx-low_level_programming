@@ -8,7 +8,7 @@
  * Return: Always 0
  */
 
-void print_alphabet9void)
+void print_alphabetic(void)
 {
 	char c;
 	
