@@ -4,7 +4,7 @@
  * main - program that prints either number
  * or fizz or buzz or fizzBuzz
  *
- * Returns: returns 0
+ * Return: returns 0
  */
 
 int main(void)
@@ -41,3 +41,4 @@ int main(void)
 
 	return (0);
 }
+
