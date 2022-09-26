@@ -12,6 +12,3 @@ void set_string(char **s, char *to)
 {
 	*s = to;
 }
-
-/* Green Green Grass - George Azra */
-
