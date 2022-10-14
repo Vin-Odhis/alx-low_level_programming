@@ -12,8 +12,7 @@ int sum_them_all(const unsigned int n, ...)
 {
 	int sum = 0;
 
-	insigned int i;
-
+	unsigned int i;
 	va_list valist;
 
 	va_start(valist, n);
