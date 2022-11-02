@@ -1,46 +1,35 @@
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stddef.h>
 
 /**
- * read_textfile - reads a text file and prints it to the POSIX standard output
- * @filename: name of the file to read
- * @letters: number of letters to print
- * Return: the actual number of letters it
- *could print and 0 when the filename is NULL and 0 when the file
- * cannot be opened or read
+ * read_textfile - reads a text file and prints it to the standard output
+ * @filename: name of the file
+ * @letters:  number of letters to be printed
+ *
+ * Return: number of letters read and printed
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	ssize_t lenr, lenw;
+	int file, n_read, wrote;
 	char *buffer;
 
-	if (filename == NULL)
-		return (0);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
-	{
-		close(fd);
-		return (0);
-	}
-	lenr = read(fd, buffer, letters);
-	close(fd);
-	if (lenr == -1)
+	buffer = malloc(sizeof(*buffer) * (letters + 1));
+	if (filename == NULL || buffer == NULL)
 	{
 		free(buffer);
 		return (0);
 	}
-	lenw = write(STDOUT_FILENO, buffer, lenr);
-	free(buffer);
-	if (lenr != lenw)
+	file = open(filename, O_RDONLY);
+	if (file == -1)
 		return (0);
-	return (lenw);
+	n_read = read(file, buffer, letters);
+	if (n_read == -1)
+		return (0);
+	buffer[n_read] = '\0';
+	wrote = write(STDOUT_FILENO, buffer, n_read);
+	if (wrote != n_read)
+		return (0);
+	free(buffer);
+	close(file);
+	return (n_read);
 }
