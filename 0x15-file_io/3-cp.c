@@ -1,89 +1,116 @@
-#include "main.h"
-
-int _close(int fd);
-int _cp(char *file_from, char *file_to);
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * main - copies the content of a file to another file
- * @argc: number of commandline arguments
- * @argv: array of commandline arguments
+ * check97 - checks for the correct number of arguments
+ * @argc: number of arguments
  *
- * Return: 0 if successful
+ * Return: void
  */
-
-int main(int argc, char **argv)
+void check97(int argc)
 {
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	/* copy from file_from to file_to */
-	_cp(argv[1], argv[2]);
-
-	return (0);
 }
-
 /**
- * _cp - copies the content of a file to another file
- * @file_from: file to copy from
- * @file_to: file to copy to
+ * check98 - checks that file_from exists and can be read
+ * @check: checks if true of false
+ * @file: file_from name
+ * @fd_from: file descriptor of file_from, or -1
+ * @fd_to: file descriptor of file_to, or -1
  *
- * Return: 1 if successful
+ * Return: void
  */
-
-int _cp(char *file_from, char *file_to)
+void check98(ssize_t check, char *file, int fd_from, int fd_to)
 {
-	int fd_r, fd_w, count;
-	char buf[1024];
-
-	fd_r = open(file_from, O_RDONLY);
-
-	fd_w = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-
-	/* read bytes from fd_r to fd_w*/
-	while ((count = read(fd_r, buf, 1024)))
+	if (check == -1)
 	{
-		if (fd_r == -1 || count == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-			_close(fd_w);
-			exit(98);
-		}
-
-		if (fd_w == -1 || write(fd_w, buf, count) != count)
-		{
-			_close(fd_r);
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			exit(99);
-		}
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+	if (fd_from != -1)
+		close(fd_from);
+	if (fd_to != -1)
+		close(fd_to);
+	exit(98);
 	}
-
-	/* close the files */
-	_close(fd_r);
-	_close(fd_w);
-
-	return (1);
 }
 
 /**
- * _close - close a file given by an file descriptor
+ * check99 - checks that file_to was created and/or can be written to
+ * @check: checks if true of false
+ * @file: file_to name
+ * @fd_from: file descriptor of file_from, or -1
+ * @fd_to: file descriptor of file_to, or -1
+ *
+ * Return: void
+ */
+void check99(ssize_t check, char *file, int fd_from, int fd_to)
+{
+	if (check == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+	if (fd_from != -1)
+		close(fd_from);
+	if (fd_to != -1)
+		close(fd_to);
+	exit(99);
+	}
+}
+
+/**
+ * check100 - checks that file descriptors were closed properly
+ * @check: checks if true or false
  * @fd: file descriptor
  *
- * Return: 1 if successful
+ * Return: void
  */
-
-int _close(int fd)
+void check100(int check, int fd)
 {
-	if (fd < 0)
-		return (1);
-
-	if (close(fd) == -1)
+	if (check == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
+}
+/**
+ * main - opies the content of a file to another file.
+ * @argc: number of arguments passed
+ * @argv: array of pointers to the arguments
+ *
+ * Return: 0 on success
+ */
+int main(int argc, char *argv[])
+{
+	int fd_from, fd_to, close_to, close_from;
+	ssize_t lenr, lenw;
+	char buffer[1024];
+	mode_t file_perm;
 
-	return (1);
+	check97(argc);
+	fd_from = open(argv[1], O_RDONLY);
+	check98((ssize_t)fd_from, argv[1], -1, -1);
+	file_perm = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, file_perm);
+	check99((ssize_t)fd_to, argv[2], fd_from, -1);
+	lenr = 1024;
+	while (lenr == 1024)
+	{
+		lenr = read(fd_from, buffer, 1024);
+		check98(lenr, argv[1], fd_from, fd_to);
+		lenw = write(fd_to, buffer, lenr);
+		if (lenw != lenr)
+			lenw = -1;
+		check99(lenw, argv[2], fd_from, fd_to);
+	}
+	close_to = close(fd_to);
+	close_from = close(fd_from);
+	check100(close_to, fd_to);
+	check100(close_from, fd_from);
+	return (0);
 }
