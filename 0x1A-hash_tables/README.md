@@ -1,4 +1,6 @@
-![image](https://imgs.search.brave.com/-nsI8lP1JfRPNFU65KZeTdgnGwGY973CbiUc9ze3XHU/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4w/RV9Oa3lPMEhYdEE0/UEdSMWdIaXdnSGFF/SyZwaWQ9QXBp)/n
+![image](https://imgs.search.brave.com/-nsI8lP1JfRPNFU65KZeTdgnGwGY973CbiUc9ze3XHU/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4w/RV9Oa3lPMEhYdEE0/UEdSMWdIaXdnSGFF/SyZwaWQ9QXBp)
+
+
 C - Hash tables.
 
 0.Write a function that creates a hash table.
